@@ -108,3 +108,16 @@ từng service xử lí
 Từ đó ta có thể thông báo lại cho user thông tin create và update or delete
 
 Trên đây là bản hướng dẫn cơ bản nhất để thực hiện một chương trình CURD API với Google Calendar
+@startwbs
+* Business Process Modelling WBS
+** Launch the project
+*** Complete Stakeholder Research
+*** Initial Implementation Plan
+** Design phase
+*** Model of AsIs Processes Completed
+**** Model of AsIs Processes Completed1
+**** Model of AsIs Processes Completed2
+*** Measure AsIs performance metrics
+*** Identify Quick Wins
+** Complete innovate phase
+@endwbs
