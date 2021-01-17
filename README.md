@@ -31,6 +31,46 @@ oAuth2Client.setCredentials({
   
 
 - Thực hiện việc CRUD with `GoogleCalendar`
+
++ List all Calendar (calendarList)
+
+````
+    let response = await calendar.calendarList.list({
+         auth: oAuth2Client,
+         url: 'https://www.googleapis.com/calendar/v3/users/me/calendarList/calendarId',
+         })
+     return response.data;
+````
++ ADD Calenadr(insert)
+  
+```
+    let response = await calendar.calendars.insert({
+        auth: oAuth2Client,
+        url: 'https://www.googleapis.com/calendar/v3/users/me/calendarList',
+        resource: event
+        });
+     console.log("Đây là Link đến sự kiện", response.data.htmlLink);
+```
++ UpdateCalendar
+  ```
+   let response = await calendar.calendars.update({
+       auth: oAuth2Client,
+       calendarId: id,
+       url: 'https://www.googleapis.com/calendar/v3/users/me/calendarList/calendarId',
+       resource: event
+      })
+      console.log("Đây là Link đã update sự kiện", response.data.htmlLink);
+  ```
+  
++ DeleteCalendar
+  ```
+   let response = await calendar.calendars.delete({
+       auth: oAuth2Client,
+       url: 'https://www.googleapis.com/calendar/v3/users/me/calendarList/calendarId',
+       calendarId: id,
+    });
+  ```
+  
 + ADD Event (insert)
     
     ```
