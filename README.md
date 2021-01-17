@@ -3,40 +3,13 @@
 Google calendars được tạo ra nhằm mục đích tạo, theo dõi, tổ chức sắp xếp thời gian cho các công việc cá nhân, cũng như
 những cuộc họp
 
-# Thực Hiện
+# Thực Hiện Authentication (googleapis with oAuth2.0);
 
-    - link: https://console.cloud.google.com/
-        Tạo Service Accounts
+    - Truy cập vào link: https://developers.google.com/oauthplayground
+    
+    - Sau khi có code thực hiện Exchange authorization code for tokens  
 
-Settings google calendar API (Cấu hình trên console.cloud.google.com sẽ có 1 file json)
 
-- Gồm có:
-  ```
-        + type
-        + project_id
-        + private_key_id
-        + private_key
-        + client_email
-        + client_id
-        + auth_uri
-        + token_uri
-        + auth_provider_x509_cert_url
-        + client_x509_cert_url
-        + CALENDAR_ID( google calendar API)
-  ```
-
-    - Tạo auth
-
-       ```
-       const SCOPES = 'https://www.googleapis.com/auth/calendar';
-       const calendar = google.calendar({version : "v3"});
-       const auth = new google.auth.JWT(
-       CREDENTIALS.client_email,
-       null,
-       CREDENTIALS.private_key,
-       SCOPES
-       ); 
-       ```
 
 Trong việc insertEvent, getEvents,updateEvent, deleteEvent chúng ta sẽ truyền `auth` ,`calendarId`, và các `data` tùy
 từng service xử lí
