@@ -3,7 +3,7 @@
 Google calendars được tạo ra nhằm mục đích tạo, theo dõi, tổ chức sắp xếp thời gian cho các công việc cá nhân, cũng như
 những cuộc họp
 
- ##Authentication
+ ## Authentication
  Nhận ủy quyền
 
 ![alt text](https://github.com/tuanna99qn/GoogleCalendar/blob/main/img/googlecalendar.PNG)
@@ -31,11 +31,46 @@ oAuth2Client.setCredentials({
   
 
 - Thực hiện việc CRUD with `GoogleCalendar`
-
-
-
-
++ ADD Event (insert)
     
-
-
-
+    ```
+      let response = await calendar.events.insert({
+         auth: oAuth2Client,
+         calendarId: calendarId,
+         resource: event
+      });
+      
+  ```
+  
++ GET Event(list)
+    
+    ```
+     let response = await calendar.events.list({
+        auth: oAuth2Client,
+        calendarId: calendarId,
+        timeMin: dateTimeStart,
+        timeMax: dateTimeEnd,
+        timeZone: 'Asia/Ho_Chi_Minh'
+        });
+     let items = response['data']['items'];
+     return items;
+    ```
+    
++ UPDATE Event(update)
+    ```
+    let response = await calendar.events.update({
+        auth: oAuth2Client,
+        calendarId: calendarId,
+        eventId: eventIdUpdate,
+        resource: event
+        })
+  ```
+  
++ DELETE Event(delete)
+``` 
+    let response = await calendar.events.delete({
+       auth: oAuth2Client,
+       calendarId: calendarId,
+       eventId: eventId
+       });
+```

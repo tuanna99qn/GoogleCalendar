@@ -52,7 +52,6 @@ const getEvents = async (dateTimeStart, dateTimeEnd) => {
             timeMax: dateTimeEnd,
             timeZone: 'Asia/Ho_Chi_Minh'
         });
-
         let items = response['data']['items'];
         return items;
     } catch (error) {
