@@ -41,7 +41,6 @@ const dateTimeForCalander = () => {
     let startDate = event;
     // Delay in end time is 1
     let endDate = new Date(new Date(startDate).setHours(startDate.getHours() + 1));
-
     return {
         'start': startDate,
         'end': endDate
@@ -53,7 +52,6 @@ let end = '2021-12-1T00:00:00.000Z';
 router.post('/calendar', (req, res) => {
     let event = {
         'summary': `This is the test2`,
-        //'id':'test@.com'
     };
     createMyCalendar(event)
         .then((res) => {
@@ -65,7 +63,6 @@ router.post('/calendar', (req, res) => {
         });
     res.status(200).json('Đã tạo ra calendar mới');
 });
-
 router.get('/calendar', (req, res) => {
     getAll()
         .then((res) => {
@@ -76,11 +73,9 @@ router.get('/calendar', (req, res) => {
         });
     res.status(200).json('Đã lấy ra danh sách calendar');
 });
-
 router.put('/calendar/:id', (req, res) => {
     let event = {
         'summary': `This is the test3`,
-        //'id':'test@.com'
     };
     let id = req.params.id;
     updateCalendar(event, id)
@@ -128,36 +123,26 @@ router.post('/event/:id', (req, res) => {
             console.log(err);
         });
     res.status(200).json('Đã tạo lịch mới');
+    console.log('Da tao lich moi')
 });
-router.post('/watch/:id', (req, res) => {
-    let event = {
-        'summary': `This is the event5`,
-        'description': `This is the description.`,
-        'start': {
-            'dateTime': dateTime['start'],
-            'timeZone': 'Asia/Ho_Chi_Minh'
-        },
-        'end': {
-            'dateTime': dateTime['end'],
-            'timeZone': 'Asia/Ho_Chi_Minh'
-        }
-    };
-    let id = req.params.id
-    watchEvent(event, id)
+router.post('/watch', (req, res) => {
+
+    watchEvent()
         .then((res) => {
             console.log(res);
-
         })
         .catch((err) => {
             console.log(err);
         });
-    res.status(200).json('Đã tạo lịch mới');
+    res.status(200).json('Watch start');
 });
-// lỗi
+router.post('/calendar-watch',((req, res) => {
+    console.log('router watch calendar',req);
+}))
 router.put('/event/update/:calendarId/:eventId', (req, res) => {
 
     let event = {
-        'summary': `This is the test3`,
+        'summary': `This is the test1`,
         'description': `This is the description.`,
         'start': {
             'dateTime': dateTime['start'],
@@ -168,8 +153,7 @@ router.put('/event/update/:calendarId/:eventId', (req, res) => {
             'timeZone': 'Asia/Ho_Chi_Minh'
         }
     };
-    let eventId = req.params.id
-    let calendarId = req.params.id
+    let {eventId,calendarId} = req.params
     updateEvent(event,calendarId,eventId)
         .then((res) => {
             console.log(res);
@@ -188,13 +172,13 @@ router.get('/event/:id', (req, res) => {
         .catch((err) => {
             console.log(err);
         });
-
     res.status(200).json('Đã lấy ra danh sách tạo lịch');
 })
+
 // Delete an event from eventID
 router.delete('/event/:calendarId/:eventId', (req, res) => {
-    let eventId = req.params.id;
-    let calendarId = req.params.id
+
+    let {eventId,calendarId} = req.params
     deleteEvent(calendarId,eventId)
         .then((res) => {
             console.log(res);
