@@ -129,7 +129,7 @@ router.post('/event/:id', (req, res) => {
         });
     res.status(200).json('Đã tạo lịch mới');
 });
-router.post('/events/:id', (req, res) => {
+router.post('/watch/:id', (req, res) => {
     let event = {
         'summary': `This is the event5`,
         'description': `This is the description.`,
@@ -157,7 +157,7 @@ router.post('/events/:id', (req, res) => {
 router.put('/event/update/:calendarId/:eventId', (req, res) => {
 
     let event = {
-        'summary': `This is the test4`,
+        'summary': `This is the test3`,
         'description': `This is the description.`,
         'start': {
             'dateTime': dateTime['start'],
@@ -169,7 +169,7 @@ router.put('/event/update/:calendarId/:eventId', (req, res) => {
         }
     };
     let eventId = req.params.id
-    let calendarId = req.query.id
+    let calendarId = req.params.id
     updateEvent(event,calendarId,eventId)
         .then((res) => {
             console.log(res);
@@ -192,7 +192,7 @@ router.get('/event/:id', (req, res) => {
     res.status(200).json('Đã lấy ra danh sách tạo lịch');
 })
 // Delete an event from eventID
-router.delete('/event/:calendarId/:id', (req, res) => {
+router.delete('/event/:calendarId/:eventId', (req, res) => {
     let eventId = req.params.id;
     let calendarId = req.params.id
     deleteEvent(calendarId,eventId)

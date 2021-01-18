@@ -100,7 +100,7 @@ describe('Event: ', () => {
 
     it(' delete Event done ', (done) => {
         chai.request(server)
-            .delete('/event/q8at8icnkca1sfahmff6cmsvdk@group.calendar.google.com')
+            .delete('/event/q8at8icnkca1sfahmff6cmsvdk@group.calendar.google.com/o80sgo3cocaqdie4nesqq0222o')
             .send('')
             .end(function (err, res) {
                 expect(res).to.have.status(200);
@@ -127,7 +127,7 @@ describe('Event: ', () => {
     });
     it(' update Event done ', (done) => {
         chai.request(server)
-            .post('/update/vereg9greh26l7ghdtigg2spds')
+            .put('/event/update/q8at8icnkca1sfahmff6cmsvdk@group.calendar.google.com/acg330r5mih2iaa4125l5ma7cg')
             .send({})
             .end(function (err, res) {
                 expect(res).to.have.status(200);
@@ -136,7 +136,7 @@ describe('Event: ', () => {
     });
     it(' update Event miss id ', (done) => {
         chai.request(server)
-            .post('/update')
+            .put('/update')
             .send({})
             .end(function (err, res) {
                 expect(res).to.have.status(404);

@@ -153,9 +153,10 @@ const updateEvent = async (event, calendarId, eventId) => {
     try {
         let response = await calendar.events.update({
             auth: oAuth2Client,
-            url: 'https://www.googleapis.com/calendar/v3/calendars/calendarId/events/eventId',
-            calendarId: calendarId,
-            eventId: eventId,
+            calendarId: 'q8at8icnkca1sfahmff6cmsvdk@group.calendar.google.com',
+            eventId: 'acg330r5mih2iaa4125l5ma7cg',
+          //  url: `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events/${eventId}`,
+            url:'https://www.googleapis.com/calendar/v3/calendars/calendarId/events/eventId',
             resource: event
         })
         // console.log("Đây là Link đã update sự kiện", response.data.htmlLink);
@@ -174,8 +175,8 @@ const deleteEvent = async (calendarId, eventId) => {
     try {
         let response = await calendar.events.delete({
             auth: oAuth2Client,
-            calendarId: calendarId,
-            eventId: eventId,
+            calendarId: 'q8at8icnkca1sfahmff6cmsvdk@group.calendar.google.com',
+            eventId: 'o80sgo3cocaqdie4nesqq0222o',
 
         });
         if (response.data === '') {
